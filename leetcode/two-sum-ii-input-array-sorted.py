@@ -1,14 +1,19 @@
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        i = 0
-        j = len(numbers) - 1
-        while True:
-            if numbers[i] + numbers[j] == target:
-                return [i + 1, j + 1]
-            elif numbers[i] + numbers[j] > target:
-                j -= 1
-            else:
-                i += 1
+        for i in range(len(numbers)):
+            start, end = 0, len(numbers) - 1
+
+            comp = target - numbers[i]
+            while start <= end:
+                mid = (start + end) // 2
+                if comp < numbers[mid]:
+                    end = mid - 1
+                elif comp > numbers[mid]:
+                    start = mid + 1
+                elif mid == i:
+                    break
+                else:
+                    return [min(i + 1, mid + 1), max(i + 1, mid + 1)]
 
 
 solution = Solution()
