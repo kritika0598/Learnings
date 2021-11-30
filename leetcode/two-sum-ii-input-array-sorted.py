@@ -1,7 +1,7 @@
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
         for i in range(len(numbers)):
-            start, end = 0, len(numbers) - 1
+            start, end = i+1, len(numbers) - 1
 
             comp = target - numbers[i]
             while start <= end:
@@ -13,7 +13,7 @@ class Solution:
                 elif mid == i:
                     break
                 else:
-                    return [min(i + 1, mid + 1), max(i + 1, mid + 1)]
+                    return [i + 1, mid + 1]
 
 
 solution = Solution()
